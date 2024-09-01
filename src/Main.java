@@ -1,5 +1,6 @@
-import java.io.*;
-import java.util.StringTokenizer;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Main {
     public static void main(String args[]) throws IOException {
@@ -7,36 +8,19 @@ public class Main {
         InputStreamReader isr = new InputStreamReader(System.in);
         BufferedReader br = new BufferedReader(isr);
 
-        OutputStreamWriter osw = new OutputStreamWriter(System.out);
-        BufferedWriter bw = new BufferedWriter(osw);
+        int STUDNET = 30;
 
-        StringTokenizer firstLine = new StringTokenizer(br.readLine(), " ");
+        int[] result = new int[STUDNET];
 
-        int buckets = Integer.parseInt(firstLine.nextToken());
-        int tryCounters = Integer.parseInt(firstLine.nextToken());
 
-        int[] result = new int[buckets + 1];
-
-        for (int i = 1; i < result.length; i++) result[i] = i;
-
-        for (int i = 0; i < tryCounters; i++) {
-
-            StringTokenizer next = new StringTokenizer(br.readLine(), " ");
-
-            int start = Integer.parseInt(next.nextToken());
-            int end = Integer.parseInt(next.nextToken());
-
-            int temp = result[start];
-            result[start] = result[end];
-            result[end] = temp;
-
+        for (int i = 0; i < STUDNET - 2; i++) {
+            int studnetNum = Integer.parseInt(br.readLine()) - 1;
+            result[studnetNum] = 1;
         }
 
-        for (int i = 1; i < result.length; i++)
-            bw.write(result[i] + " ");
-
-        bw.flush();
-        bw.close();
+        for (int i = 0; i < STUDNET; i++)
+            if (result[i] == 0)
+                System.out.println(i + 1);
 
     }
 }
