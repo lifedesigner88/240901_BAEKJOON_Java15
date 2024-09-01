@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Main {
     public static void main(String args[]) throws IOException {
@@ -8,19 +10,13 @@ public class Main {
         InputStreamReader isr = new InputStreamReader(System.in);
         BufferedReader br = new BufferedReader(isr);
 
-        int STUDNET = 30;
+        Set<Integer> set = new HashSet<>();
 
-        int[] result = new int[STUDNET];
-
-
-        for (int i = 0; i < STUDNET - 2; i++) {
-            int studnetNum = Integer.parseInt(br.readLine()) - 1;
-            result[studnetNum] = 1;
+        for (int i = 0; i < 10; i++) {
+            int num = Integer.parseInt(br.readLine());
+            set.add(num % 42);
         }
-
-        for (int i = 0; i < STUDNET; i++)
-            if (result[i] == 0)
-                System.out.println(i + 1);
-
+        System.out.println(set.size());
     }
+
 }
